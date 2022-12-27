@@ -1,0 +1,158 @@
+{% extends 'base.html' %} {% block title %}Add Data{% endblock %} {% block body_block %}
+
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<style>
+    html,
+    body {
+        min-height: 100%;
+    }
+    
+    body,
+    div,
+    form,
+    input,
+    select,
+    p {
+        padding: 7;
+        margin-left: 80px;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-right: 0;
+        outline: none;
+        font-family: Roboto, Arial, sans-serif;
+        font-size: 14px;
+        color: #666;
+    }
+    
+    h1 {
+        margin: 0;
+        font-weight: 400;
+    }
+    
+    h3 {
+        margin: 12px 0;
+        color: #8ebf42;
+    }
+    
+    .main-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+    }
+    
+    form {
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    fieldset {
+        border: none;
+        border-top: 1px solid #8ebf42;
+        text-align: center;
+    }
+    
+    .account-details,
+    .personal-details {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .account-details>div,
+    .personal-details>div>div {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+    .account-details>div,
+    .personal-details>div,
+    input,
+    label {
+        width: 100%;
+    }
+    
+    label {
+        padding: 6px 5px;
+        text-align: center;
+        vertical-align: middle;
+    }
+    
+    input {
+        padding: 5px;
+        vertical-align: middle;
+    }
+    
+    button {
+        width: 30%;
+        padding: 10px 2px;
+        border-radius: 5px;
+        margin-left: 150px;
+        margin-top: 15px;
+        border: none;
+        background: #8ebf42;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        right: 20px;
+    }
+    
+    button:hover {
+        background: #82b534;
+    }
+    
+    @media (min-width: 568px) {
+        .account-details>div,
+        .personal-details>div {
+            width: 50%;
+        }
+        label {
+            width: 40%;
+        }
+        input {
+            width: 60%;
+        }
+    }
+</style>
+
+<div class="main-block">
+
+
+
+    <h1>This Is Data Inserting Form </h1>
+
+
+</div>
+</fieldset>
+<fieldset>
+    <legend>
+        <h3>Add Data</h3>
+    </legend>
+    {% for mgs in messages %} {{mgs}} {% endfor %}
+    <div style="text-align: center;" class="personal-details">
+
+        <div>
+            <form action="{% url 'insert' %}" method="post">
+                {% csrf_token %}
+                <div><label for="bn">Book Name*</label><input type="text" name="bname" id="bn" required></div>
+                <div><label for="bk">Book Writer*</label><input type="text" name="bWriter" id="bk" required></div>
+                <div><label for="bp">Publisher*</label><input type="text" name="bPublisher" id="bp" required></div>
+                <div><label for="bi">Book Id
+*</label><input type="number" name="bid" id="bi" placeholder="input field must be numerical " required></div>
+
+
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+    {% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block title %}{% endblock %} {% block body_block %}
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Book Details</th>
+            <th scope="col">Available</th>
+            <th scope="col">Add to Cart</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for bl in Blist%}
+        <tr>
+            <th scope="row">{{ bl.Title }}
+            </th>
+            <td style="width: 600px;">
+                <details>
+                    <summary>See Book Details</summary>
+                    <p style="text-align:justify ;"> {{ bl.Book_Details }} </p>
+                </details>
+            </td>
+            <td>{{ bl.Available }}</td>
+            <td>
+                <a style="text-decoration: dashed;" href="{% url 'order' %}">Buy Now</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}
